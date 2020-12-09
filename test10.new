@@ -1,0 +1,24 @@
+program p10;
+
+var
+    name: string;
+    cost, from, till: integer;
+    f: text;
+
+begin
+
+    assign(f, 'toys.txt');
+    reset(f);
+
+    while not eof(f) do
+    begin
+        readln(f, name);
+        readln(f, cost);
+        readln(f, from);
+        readln(f, till);
+        if (cost <= 140) and (from <= 5) and (till >= 5) then
+            writeln(name);
+    end;
+
+    close(f);
+end.
