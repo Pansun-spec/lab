@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.Vocabulary;
 import org.antlr.v4.runtime.ANTLRInputStream;
 
-public class Main {
+public class MainLex {
 
     static String rjust(String str, int minLength)
     {
@@ -21,15 +21,15 @@ public class Main {
     @SuppressWarnings("deprecation")
     public static void main(String[] args) {
         try {
-            NewtonLexer lexer = new NewtonLexer(new ANTLRInputStream(new FileReader("test10.new")));
+            NewtonLexer lexer = new NewtonLexer(new ANTLRInputStream(new FileReader(args[0])));
             Token t;
             Vocabulary v = lexer.getVocabulary();
-            System.out.printf("\n\tToken\tType\tDisplayName\tLine\n");
+            System.out.printf("\n\tToken\t\tType\tDisplayName\tLine\n");
             do {
                 t = lexer.nextToken();
                 if (t.getType() != -1) {
                     System.out.printf("\t%s\t%d\t%s\t%d\n",
-                                      t.getText(),
+                                      rjust(t.getText(), 8),
                                       t.getType(),
                                       rjust(v.getDisplayName(t.getType()), 8),
                                       t.getLine());
